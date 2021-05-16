@@ -11,17 +11,17 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static com.peake.webseed.core.ProjectConstant.*;
+import static com.xiali.anni.core.ProjectConstant.*;
 
 /**
  * 代码生成器，根据数据表名称生成对应的Model、Mapper、Service、Controller简化开发。
  */
 public class CodeGenerator {
     //JDBC配置，请修改为你项目的实际配置
-    private static final String JDBC_URL = "jdbc:mysql://118.24.155.154:3306/webseed?allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&useSSL=false";
-    private static final String JDBC_USERNAME = "admin";
-    private static final String JDBC_PASSWORD = "123456";
-    private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
+    private static final String JDBC_URL = "jdbc:postgresql://1.14.9.102:15432/anniversary?autoReconnect=true&useUnicode=true";
+    private static final String JDBC_USERNAME = "postgres";
+    private static final String JDBC_PASSWORD = "666999";
+    private static final String JDBC_DIVER_CLASS_NAME = "org.postgresql.Driver";
 
     private static final String PROJECT_PATH = System.getProperty("user.dir");//项目在硬盘上的基础路径
     private static final String TEMPLATE_FILE_PATH = PROJECT_PATH + "/src/test/resources/generator/template";//模板位置
@@ -40,8 +40,9 @@ public class CodeGenerator {
     public static void main(String[] args) {
 //        genCode("member", "tbl_member");
 //        genCode("device", "tbl_device");
-//        genCode("product", "tbl_product_snapshot");
-        genModelAndMapper("tbl_order", "Order", "order");
+        genNameCode("testtable", "test_table","TestTable");
+        genModelAndMapper("test_table", "TestTable", "testtable");
+
 //        genCode("member", "tbl_member_plus");
 //        genCode("wechatmp", "tbl_tv_show");
 //        genCode("wechatmp", "tbl_news");
@@ -277,6 +278,9 @@ public class CodeGenerator {
     }
 
     private static String tableNameConvertUpperCamel(String tableName) {
+        if(!tableName.contains("_")){
+            return tableName;
+        }
         String aaa = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, tableName.toLowerCase());
         return CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, tableName.toLowerCase());
 

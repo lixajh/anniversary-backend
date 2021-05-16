@@ -4,7 +4,7 @@ Navicat MySQL Data Transfer
 Source Server         : qqsrx.site
 Source Server Version : 50558
 Source Host           : 198.46.248.122:3306
-Source Database       : webseed
+Source Database       : anni
 
 Target Server Type    : MYSQL
 Target Server Version : 50558

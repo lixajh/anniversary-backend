@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.peake.webseed</groupId>
-    <artifactId>webseed</artifactId>
+    <groupId>com.xiali.anni</groupId>
+    <artifactId>anniversary</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
@@ -83,13 +83,19 @@
             <version>2.5</version>
         </dependency>
 
-        <!--MySQL JDBC驱动-->
+        <!--&lt;!&ndash;MySQL JDBC驱动&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>mysql</groupId>-->
+            <!--<artifactId>mysql-connector-java</artifactId>-->
+            <!--<version>8.0.12</version>-->
+            <!--<scope>runtime</scope>-->
+        <!--</dependency>-->
+        <!-- postgresql驱动-->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.12</version>
-            <scope>runtime</scope>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
         </dependency>
+
         <!--MyBatis 及 插件依赖-->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -249,12 +255,12 @@
                 </configuration>
                 <dependencies>
                     <!-- 数据库驱动 我这里是postgre，其他的数据库记得改-->
+                    <!-- postgresql驱动-->
                     <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>5.1.47</version>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
                     </dependency>
-                </dependencies>
+               </dependencies>
             </plugin>
 
         </plugins>

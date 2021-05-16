@@ -5,7 +5,7 @@
  Source Server Type    : MySQL
  Source Server Version : 50626
  Source Host           : 118.24.155.154:3306
- Source Schema         : webseed
+ Source Schema         : anni
 
  Target Server Type    : MySQL
  Target Server Version : 50626

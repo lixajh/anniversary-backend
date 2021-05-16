@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.peake.webseed.feature.news.mapper.TvshowMapper">
-  <resultMap id="BaseResultMap" type="com.peake.webseed.feature.news.model.Tvshow">
+<mapper namespace="com.xiali.anni.feature.news.mapper.TvshowMapper">
+  <resultMap id="BaseResultMap" type="com.xiali.anni.feature.news.model.Tvshow">
     <!--
       WARNING - @mbg.generated
     -->

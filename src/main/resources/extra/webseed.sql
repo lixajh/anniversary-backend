@@ -4,7 +4,7 @@ Navicat MySQL Data Transfer
 Source Server         : 118.24.155.154
 Source Server Version : 50626
 Source Host           : 118.24.155.154:3306
-Source Database       : webseed
+Source Database       : anni
 
 Target Server Type    : MYSQL
 Target Server Version : 50626

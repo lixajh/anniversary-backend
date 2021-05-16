@@ -49,7 +49,7 @@ mybatis:
 #    - tk.mybatis.mapper.common.Mapper
 #  notEmpty: true
 
-domain: http://peake.mynatapp.cc/
+domain: http://xiali.mynatapp.cc/
 #pay config
 alipay:
   sandbox: false
