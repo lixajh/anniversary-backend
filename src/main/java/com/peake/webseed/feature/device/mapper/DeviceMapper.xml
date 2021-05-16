@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peake.webseed.feature.device.mapper.DeviceMapper">
+  <resultMap id="BaseResultMap" type="com.peake.webseed.feature.device.model.Device">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="pk_id" jdbcType="BIGINT" property="pkId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="data_status" jdbcType="INTEGER" property="dataStatus" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="online" jdbcType="INTEGER" property="online" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="fk_merchant_id" jdbcType="BIGINT" property="fkMerchantId" />
+    <result column="fk_type_id" jdbcType="BIGINT" property="fkTypeId" />
+    <result column="offline_time" jdbcType="TIMESTAMP" property="offlineTime" />
+  </resultMap>
+
+  <select id="findByCustomCondition" resultMap="BaseResultMap">
+    select a.pk_id, a.name, a.code, a.data_status, a.online,a.remark, a.update_time,a.create_time,a.address,a.fk_merchant_id,a.fk_type_id,a.offline_time
+    from tbl_device a
+
+    where a.data_status != -1
+    <if test="obj.name != null and obj.name != ''">
+      and a.name like  concat('%' ,#{obj.name}, '%')
+    </if>
+
+    <if test="obj.dataStatus != null">
+      and a.data_status = #{obj.dataStatus}
+    </if>
+    <if test="obj.code != null and obj.code != ''">
+      and a.code like concat('%' ,#{obj.code}, '%')
+    </if>
+    order by a.create_time DESC
+  </select>
+
+  <update id="batchDelete" >
+      update tbl_device set data_status ="-1"
+      where pk_id in
+    <foreach collection="array" item="item" index="index" open="(" close=")" separator=",">
+      #{item,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+
+  <select id="findByCode" resultMap="BaseResultMap">
+    select a.pk_id, a.name, a.code, a.data_status, a.online,a.remark, a.update_time,a.create_time,a.address,a.fk_merchant_id,a.fk_type_id,a.offline_time
+    from tbl_device a
+
+    where a.data_status != -1
+
+      and a.code =#{code}
+
+  </select>
+
+</mapper>

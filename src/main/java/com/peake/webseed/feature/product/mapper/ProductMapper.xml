@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peake.webseed.feature.product.mapper.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.peake.webseed.feature.product.model.Product">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="pk_id" jdbcType="BIGINT" property="pkId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="data_status" jdbcType="INTEGER" property="dataStatus" />
+    <result column="item_desc" jdbcType="VARCHAR" property="itemDesc" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
+    <result column="md5" jdbcType="VARCHAR" property="md5" />
+  </resultMap>
+
+  <update id="batchUpdateStatus">
+    update tbl_product set data_status =#{status}
+    where pk_id in
+    <foreach close=")" collection="ids" index="index" item="item" open="(" separator=",">
+      #{item,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+
+  <select id="findByCustomCondition" resultMap="BaseResultMap">
+    select a.*
+    from tbl_product a
+
+    where a.data_status != -1
+    <if test="obj.name != null and obj.name != ''">
+      and a.name like  concat('%' ,#{obj.name}, '%')
+    </if>
+
+    <if test="obj.title != null and obj.title != ''">
+      and a.title like  concat('%' ,#{obj.title}, '%')
+    </if>
+
+    <if test="obj.dataStatus != null">
+      and a.data_status = #{obj.dataStatus}
+    </if>
+
+    order by a.create_time DESC
+  </select>
+
+</mapper>

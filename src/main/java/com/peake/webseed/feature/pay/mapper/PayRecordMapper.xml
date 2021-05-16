@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peake.webseed.feature.pay.mapper.PayRecordMapper">
+  <resultMap id="BaseResultMap" type="com.peake.webseed.feature.pay.model.PayRecord">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="pk_id" jdbcType="BIGINT" property="pkId" />
+    <result column="out_trade_no" jdbcType="VARCHAR" property="outTradeNo" />
+    <result column="transaction_no" jdbcType="VARCHAR" property="transactionNo" />
+    <result column="total_fee" jdbcType="DECIMAL" property="totalFee" />
+    <result column="pay_way" jdbcType="INTEGER" property="payWay" />
+    <result column="pay_status" jdbcType="INTEGER" property="payStatus" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="attach" jdbcType="VARCHAR" property="attach" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="data_status" jdbcType="INTEGER" property="dataStatus" />
+    <result column="fk_order_id" jdbcType="BIGINT" property="fkOrderId" />
+  </resultMap>
+
+  <select id="findByOutTradeNo" resultMap="BaseResultMap">
+    select *
+    from tbl_pay_record a
+
+    where  a.out_trade_no =#{outTradeNo}
+
+  </select>
+</mapper>

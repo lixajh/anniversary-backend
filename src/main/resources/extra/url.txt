@@ -1,0 +1,5 @@
+http://peake.mynatapp.cc/mobilefront/#/index?result=0&isNew=1
+
+http://peake.mynatapp.cc/server/mobile/member/toAuth
+
+http://peake.mynatapp.cc/server/mobile/member/wechatLogin

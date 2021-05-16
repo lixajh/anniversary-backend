@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peake.webseed.feature.product.mapper.ProductSnapshotMapper">
+  <resultMap id="BaseResultMap" type="com.peake.webseed.feature.product.model.ProductSnapshot">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="pk_id" jdbcType="BIGINT" property="pkId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="data_status" jdbcType="INTEGER" property="dataStatus" />
+    <result column="item_desc" jdbcType="VARCHAR" property="itemDesc" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
+    <result column="fk_product_id" jdbcType="BIGINT" property="fkProductId" />
+    <result column="md5" jdbcType="VARCHAR" property="md5" />
+  </resultMap>
+
+  <select id="getSnapshotByProductId" resultMap="BaseResultMap">
+    select a.*
+    from tbl_product_snapshot a
+
+    where 1=1
+    and a.fk_product_id = #{productId}
+    order by a.update_time DESC limit 1
+  </select>
+
+</mapper>
